@@ -6,6 +6,7 @@ from sklearn import preprocessing
 from sklearn import model_selection
 from sklearn import linear_model
 
+
 data = h5py.File("data.hdf5", 'r')
 jumping_df = pd.DataFrame()
 walking_df = pd.DataFrame()
@@ -41,7 +42,7 @@ def featureExtraction(dataframe):
                                               'std_x', 'std_y', 'std_z', 'kurtosis_x','kurtosis_y','kurtosis_z'\
                                                  ])#, 'slope_x','slope_y','slope_z'])
     
-    df_split = np.split(dataframe, range(window_size, dataframe.shape[0], window_size))
+    df_split = np.split(dataframe, range(window_size, dataframe.shape[0], window_size)) #SPlits into 5 second
 
     # Calculate all features
     for i in range(0, len(df_split)):
@@ -110,29 +111,29 @@ def fill(df):
     df.interpolate(method='linear', inplace=True)  # Linear Regression/interpolation imputation
 
 
-# def filtering(df):
-#     # setting the frequency of sampling and the frequency of sine
-#     freq_sampling = 900
-#     freq = 5
-#     # how many samples do we need
-#     n_sample = 700
-#     x_input = np.arange(n_sample)
-#     # building the sine function
-#     y = np.sin((2 * np.pi * freq * x_input) / freq_sampling)
-#     # converting y to dataframe
-#     y_df = pd.DataFrame(y)
-#     # applying SMA
-#     window_size = 21
-#     y_sma = y_df.rolling(window_size).mean()
-#     # plotting
-#     fig, ax = plt.subplots(figsize=(10, 10))
-#     ax.plot(x_input, y, linewidth=5)
-#     ax.plot(x_input, y_df)
-#     ax.plot(x_input, y_sma.to_numpy(), linewidth=5)
-#     ax.legend(['sine without noise', 'noisy sine', 'SMA 20'])
-#     ax.set_xlabel('x')
-#     ax.set_ylabel('y')
-#     plt.show()
+def filtering(df):
+    # setting the frequency of sampling and the frequency of sine
+    freq_sampling = 900
+    freq = 5
+    # how many samples do we need
+    n_sample = 700
+    x_input = np.arange(n_sample)
+    # building the sine function
+    y = np.sin((2 * np.pi * freq * x_input) / freq_sampling)
+    # converting y to dataframe
+    y_df = pd.DataFrame(y)
+    # applying SMA
+    window_size = 21
+    y_sma = y_df.rolling(window_size).mean()
+    # plotting
+    fig, ax = plt.subplots(figsize=(10, 10))
+    ax.plot(x_input, y, linewidth=5)
+    ax.plot(x_input, y_df)
+    ax.plot(x_input, y_sma.to_numpy(), linewidth=5)
+    ax.legend(['sine without noise', 'noisy sine', 'SMA 20'])
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    plt.show()
 
 
 jumping_features = featureExtraction(jumping_df)

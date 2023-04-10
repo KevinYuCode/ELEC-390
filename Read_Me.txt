@@ -7,3 +7,6 @@
 2,6=jacket
 3,7=hand
 """
+
+label 1 = jumping
+label 2 = walking
