@@ -171,6 +171,9 @@ ax2.set_title('Accelerations vs Time (Jumping)')
 ax2.set_xlabel('Time')
 ax2.set_ylabel('Acceleration (m/s)')
 
+#Add meta data tags
+
+
 # Add a legend
 ax2.legend(["X-acceleration", "Y-acceleration", "Z-acceleration"])
 
@@ -200,7 +203,6 @@ jumping_features = jumping_features[~outliers_jumping]
 # ------------------------------------------ CREATING A CLASSIFIER ------------------------------------------ #
 # Store walking and jumping features into one dataframe
 all_features = pd.concat([walking_features, jumping_features], axis=0)
-print(len(all_features.iloc[0,:]))
 
 # Label the walking features with a 1 and jumping with a 0 and store those values in a np array
 walking_labels = np.ones(len(walking_features))
@@ -223,6 +225,7 @@ model = log_reg.fit(x_train, y_train)
 print("Model Accuracy: " , model.score(x_test, y_test))
 
 # ------------------------------------------ DATA STORAGE ------------------------------------------ #
+
 #Store the train and test data in the HDF5 file
 train.create_dataset('x_train', data = x_train)
 train.create_dataset('y_train', data = y_train)
