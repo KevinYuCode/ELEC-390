@@ -62,7 +62,7 @@ jumping_data = pd.concat([jacobs_data[0], taylors_data[0], kevins_data[0]]) # Co
 
 # ------------------------------------------ PREPROCESSING ------------------------------------------ #
 
-# Apply a moving average filter with a window size of 3
+# Apply a moving average filter with a window size of 10
 walking_data = walking_data.rolling(window=10).mean()
 jumping_data = jumping_data.rolling(window=10).mean()
 

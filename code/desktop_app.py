@@ -228,7 +228,19 @@ def read_csv():
     # Drop all other columns
     df = df[cols_to_keep]
 
+# -----------------------
+
+    # Apply a moving average filter with a window size of 3
+    df = df.rolling(window=10).mean()
+
+    # Remove the NaN values from the walking and jumping data
+    df.dropna(inplace=True)
+
+# -----------------------
+
     split_df = np.array_split(df, len(df)/500, axis=0) #Split the data into 5 second intervals 
+
+
     df_features = get_features(split_df) #Extract the features from the inputted data
 
     #Predict the input from the user
@@ -274,9 +286,8 @@ def read_csv():
     
 
 # Create a button to open the file dialog and read the CSV file
-button = tk.Button(window, text="Add Jumping or Walking CSV Data", command=read_csv, font=("Arial", 16), bg="lightgreen", fg="black", padx=20, pady=10)
+button = tk.Button(window, text="Add Jumping or Walking CSV Data", command=read_csv, font=("Arial", 16), bg="lightgreen", fg="black", padx=10, pady=10)
 button.pack()
-button.place(relx=0.5, rely=0.5, anchor="center")
 
 # Create a text widget to display the CSV data
 text = tk.Text(window)

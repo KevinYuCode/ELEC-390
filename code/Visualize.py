@@ -2,13 +2,13 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-jump = pd.read_csv('jacob/0.csv')
-mask = (jump.iloc[:, 0] >= 0) & (jump.iloc[:, 0] <= 5)
-jump = jump.loc[mask]
+# jump = pd.read_csv('../kevin/0.csv')
+# mask = (jump.iloc[:, 0] >= 0) & (jump.iloc[:, 0] <= 5)
+# jump = jump.loc[mask]
 
 fig, ax = plt.subplots(nrows=1, ncols=3, figsize=(15, 5))
 
-walk = pd.read_csv('jacob/4.csv')
+walk = pd.read_csv('../kevin/3.csv')
 mask = (walk.iloc[:, 0] >= 0) & (walk.iloc[:, 0] <= 5)
 walk = walk.loc[mask]
 
