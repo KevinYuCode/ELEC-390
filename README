@@ -1,9 +1,9 @@
 #ELEC 390 Principles of Design and Development
 ELEC 390 was a project-based course where students learned the fundamentals of data science. In this class we touched on:
--Data collection
--Data processing
--Data Visualization
--Data Analysis
++ Data collection
++ Data processing
++ Data Visualization
++ Data Analysis
 
 Our project was to create a machine learning model using linear regression to predict jumping vs walking movement data from a phone's accelerometer.
 
