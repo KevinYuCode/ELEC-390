@@ -1,4 +1,4 @@
-#ELEC 390 Principles of Design and Development
+# ELEC 390 Principles of Design and Development
 ELEC 390 was a project-based course where students learned the fundamentals of data science. In this class we touched on:
 + Data collection
 + Data processing
